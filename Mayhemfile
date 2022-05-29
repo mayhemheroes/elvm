@@ -1,0 +1,5 @@
+project: rnshah9/elvm
+target: elvm
+
+cmds:
+  - cmd: /repo/out/whirl @@
