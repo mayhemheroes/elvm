@@ -1,5 +1,5 @@
-project: rnshah9/elvm
-target: elvm
+project: elvm
+target: whirl
 
 cmds:
   - cmd: /repo/out/whirl @@
