@@ -2,4 +2,4 @@ project: elvm
 target: whirl
 
 cmds:
-  - cmd: /repo/out/whirl @@
+  - cmd: /whirl @@
