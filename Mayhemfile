@@ -1,0 +1,5 @@
+project: elvm
+target: whirl
+
+cmds:
+  - cmd: /whirl @@
