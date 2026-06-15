@@ -120,6 +120,7 @@ ELC_SRCS := \
 	forth.c \
 	f90.c \
 	fs.c \
+	gnufind.c \
 	go.c \
 	gomplate.c \
 	hell.c \
@@ -495,6 +496,19 @@ $(OUT.eir.fs.out): tools/runfs.sh
 TARGET := pl
 RUNNER := perl
 include target.mk
+
+TARGET := gnufind
+RUNNER := tools/rungnufind.sh
+# never run: either far too slow, or (the largest, e.g. the self-hosting compilers) exceed ARG_MAX
+TEST_FILTER := out/fizzbuzz.c.eir.gnufind out/qsort.c.eir.gnufind out/fizzbuzz_fast.c.eir.gnufind out/lisp.c.eir.gnufind out/8cc.c.eir.gnufind out/elc.c.eir.gnufind out/dump_ir.c.eir.gnufind out/eli.c.eir.gnufind
+# these tests require a very huge amount of computation time
+ifndef FULL
+TEST_FILTER += out/24_cmp2.c.eir.gnufind out/24_cmp.c.eir.gnufind out/24_muldiv.c.eir.gnufind out/bool.c.eir.gnufind out/copy_struct.c.eir.gnufind out/eof.c.eir.gnufind out/field_addr.c.eir.gnufind out/global_struct_ref.c.eir.gnufind out/muldiv.c.eir.gnufind out/printf.c.eir.gnufind out/print_int.c.eir.gnufind out/computed_goto.c.eir.gnufind out/fgets.c.eir.gnufind out/bitops.c.eir.gnufind
+# likewise these (minutes each); keep the default `make gnufind` quick, as the hell backend does.
+TEST_FILTER += out/array.c.eir.gnufind out/func.c.eir.gnufind out/func2.c.eir.gnufind out/func_ptr.c.eir.gnufind out/global.c.eir.gnufind out/global_array.c.eir.gnufind out/hello.c.eir.gnufind out/increment.c.eir.gnufind out/logic_val.c.eir.gnufind out/loop.c.eir.gnufind out/malloc.c.eir.gnufind out/nullptr.c.eir.gnufind out/puts.c.eir.gnufind out/struct.c.eir.gnufind out/swapcase.c.eir.gnufind out/switch_case.c.eir.gnufind out/switch_op.c.eir.gnufind out/switch_range.c.eir.gnufind
+endif
+include target.mk
+$(OUT.eir.gnufind.out): tools/rungnufind.sh
 
 TARGET := go
 RUNNER := go run

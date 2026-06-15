@@ -34,6 +34,7 @@ Currently, there are 60 backends:
 1. F# (by [@masaedw](https://github.com/masaedw/))
 1. Forth (by [@dubek](https://github.com/dubek/))
 1. Fortran (by [@samcoppini](https://github.com/samcoppini/))
+1. GNU find (by [@ogiekako](https://github.com/ogiekako/))
 1. Go (by [@shogo82148](https://github.com/shogo82148/))
 1. Go text/template (Gomplate) (by [@Syuparn](https://github.com/syuparn/))
 1. Grass (by [@woodrush](https://github.com/woodrush/))
