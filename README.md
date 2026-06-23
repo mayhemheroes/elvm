@@ -424,6 +424,20 @@ Implementation details are described in the [GrassVM](https://github.com/woodrus
 This backend is tested with the Grass interpreter [grass.ml](https://gist.github.com/woodrush/3d85a6569ef3c85b63bfaf9211881af6), originally written by [@ytomino](https://github.com/ytomino) and modified by [@youz](https://github.com/youz) and [@woodrush](https://github.com/woodrush).
 The modifications are described in the [GrassVM](https://github.com/woodrush/grassvm) repository.
 
+### GNU find
+
+The [GNU find](https://www.gnu.org/software/findutils/) backend was contributed by [@ogiekako](https://github.com/ogiekako/).
+
+This backend compiles a program into a single shell script, which is nothing but
+a few `find` invocations, each of which in turn `-exec`s only more `find`. All
+program state lives as files in a scratch directory. See the
+[commit message](https://github.com/shinh/elvm/commit/4e42a7103583eae2edf0f1df35f0649c94354340)
+for details. It is very slow, so only a subset of tests runs by default. Run
+more (very slowly) with `FULL=1 make gnufind`.
+
+The scratch directory's parent can be overridden with `GF_TMPDIR` (or
+`TMPDIR`); by default an in-memory filesystem (`/dev/shm`) is preferred when
+available and `/tmp` otherwise.
 
 ## Future works
 
