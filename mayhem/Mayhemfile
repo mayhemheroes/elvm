@@ -1,0 +1,10 @@
+project: elvm
+target: whirl
+
+# The upstream target was a raw file-input CLI (`whirl @@`, reading a file of '0'/'1' bytes). It is
+# converted to an in-process libFuzzer harness (mayhem/fuzz_whirl.cc) over the SAME interpreter code
+# path (op_ring/math_ring::execute + the main dispatch loop) so Mayhem gets instrumented in-process
+# coverage. Target name preserved for parity with the original `whirl` target.
+cmds:
+  - cmd: /mayhem/fuzz_whirl
+    libfuzzer: true
